@@ -1,10 +1,10 @@
-import App from "next/app"
-import { appWithTranslation } from "../i18n"
+import React from 'react'
+import { AppProps } from 'next/app'
 
-const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />
+import '../styles/globals.css' // <- applied everywhere in the NextJS application scope
 
-MyApp.getInitialProps = async (appContext) => ({
-  ...(await App.getInitialProps(appContext)),
-})
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return <Component {...pageProps} />
+}
 
-export default appWithTranslation(MyApp)
+export default MyApp

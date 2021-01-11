@@ -1,30 +1,22 @@
-import { i18n, withTranslation } from "~i18n"
-import { getTranslatedText } from "../utils/homeTranslation"
+import useTranslation from 'next-translate/useTranslation'
 
-const namespaces = { common: "common" }
+const Homepage = () => {
+  const { t } = useTranslation('common')
 
-const Homepage = ({ t }) => {
   return (
     <>
       <main>
         <div>
           <button
             type="button"
-            onClick={() =>
-              i18n.changeLanguage(i18n.language === "en" ? "de" : "en")
-            }
+            onClick={() => console.log('later change lang here')}
           >
-            {t("hello")}
+            {t('variable-example', { count: 42 })}
           </button>
-          <span>{getTranslatedText(i18n.language, "tree")}</span>
         </div>
       </main>
     </>
   )
 }
 
-Homepage.getInitialProps = async () => ({
-  namespacesRequired: [Object.values(namespaces)],
-})
-
-export default withTranslation()(Homepage)
+export default Homepage
